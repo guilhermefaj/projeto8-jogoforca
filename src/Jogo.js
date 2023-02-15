@@ -3,12 +3,16 @@ import palavras from "./palavras"
 
 export default function Jogo(props) {
     const [palavra, setPalavra] = useState("")
+    const [underline, setUnderline] = useState("")
 
-    function inserirPalavra() {
+    let erros = 0;
+
+    function escolherPalavra() {
+        const palavra = palavras[Math.floor(Math.random() * palavras.length)]
+        setPalavra(palavra);
+        let novoUnderline = palavra.replaceAll(/./g, "_ ");
+        setUnderline(novoUnderline);
         props.iniciarJogo();
-        const novaPalavra = palavras[Math.floor(Math.random() * palavras.length)]
-        setPalavra(novaPalavra);
-        console.log(novaPalavra)
     }
 
     return (
@@ -17,11 +21,11 @@ export default function Jogo(props) {
             <div>
                 <button
                     className="escolherPalavra"
-                    onClick={inserirPalavra}
+                    onClick={escolherPalavra}
                 >
                     Escolher Palavra
                 </button>
-                <span>{palavra}</span>
+                <span>{underline}</span>
             </div>
         </div>
     )
