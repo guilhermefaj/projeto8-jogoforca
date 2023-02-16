@@ -1,19 +1,8 @@
 import { useState } from "react";
-import palavras from "./palavras"
 
 export default function Jogo(props) {
-    const [palavra, setPalavra] = useState("")
-    const [underline, setUnderline] = useState("")
 
-    let erros = 0;
-
-    function escolherPalavra() {
-        const palavra = palavras[Math.floor(Math.random() * palavras.length)]
-        setPalavra(palavra);
-        let novoUnderline = palavra.replaceAll(/./g, "_ ");
-        setUnderline(novoUnderline);
-        props.iniciarJogo();
-    }
+    const [erros, setErros] = useState(0);
 
     return (
         <div className="Jogo">
@@ -21,11 +10,11 @@ export default function Jogo(props) {
             <div>
                 <button
                     className="escolherPalavra"
-                    onClick={escolherPalavra}
+                    onClick={props.escolherPalavra}
                 >
                     Escolher Palavra
                 </button>
-                <span>{underline}</span>
+                <span>{props.underline}</span>
             </div>
         </div>
     )
