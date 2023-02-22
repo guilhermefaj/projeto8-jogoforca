@@ -6,12 +6,13 @@ export default function BotaoLetra(props) {
 
     function letraSelecionada() {
         setSelecionada(true);
+        props.onClick();
     }
 
     return (
         <button
             onClick={letraSelecionada}
-            disabled={props.letrasHabilitadas ? selecionada : true}
+            disabled={props.habilitarLetras ? selecionada : true}
         >
             {props.letra}
         </button>

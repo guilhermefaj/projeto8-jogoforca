@@ -7,11 +7,12 @@ export default function Letras(props) {
     return (
         <>
             <div className="Letras">
-                {alfabeto.map((item) => (
+                {alfabeto.map((letra) => (
                     <BotaoLetra
-                        key={item}
-                        letra={item}
-                        letrasHabilitadas={props.habilitarLetras}
+                        key={letra}
+                        onClick={() => props.substituirLetra(letra)}
+                        letra={letra}
+                        habilitarLetras={props.habilitarLetras}
                     />
                 ))}
             </div>
