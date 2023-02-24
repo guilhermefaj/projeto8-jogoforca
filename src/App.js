@@ -16,6 +16,7 @@ export default function App() {
   const [vitoria, setVitoria] = useState(false);
 
   console.log("letras escolhidas:", letrasEscolhidas)
+  console.log(palavra)
 
   function escolherPalavra() {
     setLetrasEscolhidas([]);
@@ -41,6 +42,7 @@ export default function App() {
       setLetrasEscolhidas([...letrasEscolhidas, letra]);
       if (novaUnderline.indexOf("_") === -1) {
         setVitoria(true);
+        setHabilitarLetras(false);
       }
     } else {
       setErros(erros + 1);
