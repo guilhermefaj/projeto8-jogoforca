@@ -7,7 +7,7 @@ const alfabeto = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm
 
 export default function App() {
 
-  const [iniciou, setIniciou] = useState(false);
+  const [habilitarLetras, setHabilitarLetras] = useState(false);
   const [palavra, setPalavra] = useState("");
   const [underline, setUnderline] = useState("");
   const [letrasEscolhidas, setLetrasEscolhidas] = useState([]);
@@ -15,14 +15,19 @@ export default function App() {
   const [gameOver, setGameOver] = useState(false);
   const [vitoria, setVitoria] = useState(false);
 
-  console.log("erros", erros)
+  console.log("erros:", erros)
+  console.log("palavra:", palavra)
+  console.log("gameOver:", gameOver)
+  console.log("vitoria:", vitoria)
 
   function escolherPalavra() {
+    setLetrasEscolhidas([]);
+    setErros(0);
     const palavra = palavras[Math.floor(Math.random() * palavras.length)]
     setPalavra(palavra);
     let novoUnderline = palavra.replaceAll(/./g, "_ ");
     setUnderline(novoUnderline);
-    setIniciou(true);
+    setHabilitarLetras(true);
   }
 
   function substituirLetra(letra) {
@@ -38,7 +43,6 @@ export default function App() {
       setUnderline(novaUnderline);
       setLetrasEscolhidas([...letrasEscolhidas, letra]);
       if (novaUnderline.indexOf("_") === -1) {
-        setGameOver(true);
         setVitoria(true);
       }
     } else {
@@ -46,6 +50,8 @@ export default function App() {
       setLetrasEscolhidas([...letrasEscolhidas, letra]);
       if (erros + 1 === 6) {
         setGameOver(true);
+        setHabilitarLetras(false);
+        setUnderline(palavra);
       }
     }
   }
@@ -72,10 +78,12 @@ export default function App() {
         palavra={palavra}
         escolherPalavra={escolherPalavra}
         erros={erros}
+        vitoria={vitoria}
+        gameOver={gameOver}
       />
       <div className="LetrasContainer">
         <Letras
-          habilitarLetras={iniciou}
+          habilitarLetras={habilitarLetras}
           substituirLetra={substituirLetra}
           exibirLetras={exibirLetras}
         />

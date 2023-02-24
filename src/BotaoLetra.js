@@ -11,6 +11,7 @@ export default function BotaoLetra(props) {
 
     return (
         <button
+            data-test="letter"
             onClick={letraSelecionada}
             disabled={props.habilitarLetras ? selecionada : true}
         >
