@@ -15,9 +15,6 @@ export default function App() {
   const [gameOver, setGameOver] = useState(false);
   const [vitoria, setVitoria] = useState(false);
 
-  console.log("letras escolhidas:", letrasEscolhidas)
-  console.log(palavra)
-
   function escolherPalavra() {
     setLetrasEscolhidas([]);
     setErros(0);
