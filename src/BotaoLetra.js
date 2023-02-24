@@ -1,11 +1,6 @@
-import { useState } from "react";
-
 export default function BotaoLetra(props) {
 
-    const [selecionada, setSelecionada] = useState(false);
-
     function letraSelecionada() {
-        setSelecionada(true);
         props.onClick();
     }
 
@@ -13,7 +8,7 @@ export default function BotaoLetra(props) {
         <button
             data-test="letter"
             onClick={letraSelecionada}
-            disabled={props.habilitarLetras ? selecionada : true}
+            disabled={props.habilitarLetras ? props.foiEscolhida : true}
         >
             {props.letra}
         </button>

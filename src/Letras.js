@@ -13,6 +13,7 @@ export default function Letras(props) {
                         onClick={() => props.substituirLetra(letra)}
                         letra={letra}
                         habilitarLetras={props.habilitarLetras}
+                        foiEscolhida={props.letrasEscolhidas.includes(letra)}
                     />
                 ))}
             </div>

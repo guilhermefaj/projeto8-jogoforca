@@ -15,10 +15,7 @@ export default function App() {
   const [gameOver, setGameOver] = useState(false);
   const [vitoria, setVitoria] = useState(false);
 
-  console.log("erros:", erros)
-  console.log("palavra:", palavra)
-  console.log("gameOver:", gameOver)
-  console.log("vitoria:", vitoria)
+  console.log("letras escolhidas:", letrasEscolhidas)
 
   function escolherPalavra() {
     setLetrasEscolhidas([]);
@@ -86,6 +83,7 @@ export default function App() {
           habilitarLetras={habilitarLetras}
           substituirLetra={substituirLetra}
           exibirLetras={exibirLetras}
+          letrasEscolhidas={letrasEscolhidas}
         />
       </div>
 
