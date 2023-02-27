@@ -15,9 +15,14 @@ export default function App() {
   const [gameOver, setGameOver] = useState(false);
   const [vitoria, setVitoria] = useState(false);
 
+  console.log(palavra)
+
   function escolherPalavra() {
     setLetrasEscolhidas([]);
     setErros(0);
+    setVitoria(false);
+    setGameOver(false);
+
     const palavra = palavras[Math.floor(Math.random() * palavras.length)]
     setPalavra(palavra);
     let novoUnderline = palavra.replaceAll(/./g, "_ ");
